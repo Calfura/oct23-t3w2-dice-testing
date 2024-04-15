@@ -85,12 +85,12 @@ describe('As a dungeon master...', () => {
         let diceResult = rollDice(diceObject.diceSize);
         expect(diceResult).toBeGreaterThan(0);
         expect(diceResult).toBeLessThanOrEqual(diceObject.diceSize);
-    })
+    });
 
 
 
 
-    
+
         // test('D6', () => { 
         //     let result = rollDice();
 
@@ -126,6 +126,25 @@ describe('As a dungeon master...', () => {
 		// expect(result).toBeLessThanOrEqual(20);
         //  });
      })
+
+     test("...I want to see how many natural 20s I get in a session where I roll 1000 D20s...", () => {
+
+        let diceResults = [];
+
+        for(let index = 0; index < 1000; index++){
+            diceResults.push(rollDice(20));
+        };
+
+        console.log(diceResults);
+        console.log(diceResults.length);
+
+        let arrayOfNatural20s = diceResults.filter((result) => result ==20);
+        console.log("Number of natural 20s is: " + arrayOfNatural20s.length);
+
+        expect(diceResults.length).toBe(1000);
+        expect(diceResults).toContain(20);
+
+     });
 
  });
 
